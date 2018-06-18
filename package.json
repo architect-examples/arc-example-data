@@ -1,0 +1,20 @@
+{
+  "name": "arc-example-data",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "NODE_ENV=testing ARC_LOCAL=1 tape test/*-test.js | tap-spec"
+  },
+  "keywords": [],
+  "author": "Brian LeRoux <b@brian.io>",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "@architect/data": "^2.0.2",
+    "@architect/workflows": "^3.1.15"
+  },
+  "devDependencies": {
+    "tap-spec": "^5.0.0",
+    "tape": "^4.9.1"
+  }
+}
