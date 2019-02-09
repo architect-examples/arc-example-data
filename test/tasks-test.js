@@ -1,5 +1,5 @@
 let test = require('tape')
-let sandbox = require('@architect/workflows').sandbox
+let arc = require('@architect/architect')
 let data = require('@architect/data')
 
 /**
@@ -9,19 +9,17 @@ let data = require('@architect/data')
 // ensure the env is setup correctly
 test('env', t=> {
   t.plan(2)
-  t.ok(sandbox, 'got sandbox')
+  t.ok(arc, 'got sandbox')
   t.ok(data, 'got data')
   console.log(data)
 })
   
 // start the sandbox; save a ref to end
 let end
-test('sandbox.start', t=> {
+test('sandbox.start', async t=> {
   t.plan(1)
-  sandbox.start(function _sandbox(_end) {
-    end = _end
-    t.ok(true, 'started server')
-  })
+  end = await arc.sandbox.start()
+  t.ok(true, 'started server')
 })
 
 // insert a row
@@ -129,9 +127,9 @@ test('data.delete', t=> {
 */
 
 // end the sandbox
-test('sandbox.end', t=> {
+test('sandbox.end', async t=> {
   t.plan(1)
   end()
-  t.ok('closed')
+  t.ok(true, 'shutdown')
 })
 
